@@ -1,17 +1,38 @@
 # login_page_bloc
 
-A new Flutter project.
+# Login Page using Flutter Bloc
 
-## Getting Started
+A simple Flutter login screen built using the Bloc state management pattern to understand event-driven state management and UI state handling.
 
-This project is a starting point for a Flutter application.
+## Features
 
-A few resources to get you started if this is your first Flutter project:
+- Email and Password input fields
+- Form validation
+- Loading state handling
+- Login success and failure states
+- Error message display
+- Disabled login button during loading
+- BlocListener for side effects
+- BlocBuilder for UI updates
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+## Concepts Practiced
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- BlocProvider
+- BlocBuilder
+- BlocListener
+- Events and States
+- Form Validation
+- State-driven UI
+- Loading and Error Handling
+- Separation of UI and Business Logic
+
+## Learning Outcome
+
+Through this project, I explored how Bloc manages application state using events and state transitions. I gained practical experience in handling validation, loading states, authentication flow simulation, and reactive UI updates while maintaining a clean separation between presentation and business logic.
+
+## Tech Stack
+
+- Flutter
+- flutter_bloc
+
+
