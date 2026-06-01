@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:login_page_bloc/Auth_bloc/auth_bloc.dart';
+import 'package:login_page_bloc/home_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
@@ -27,16 +28,19 @@ class LoginScreen extends StatelessWidget {
         ]),
       ),
       child: BlocListener<AuthBloc,AuthStates>(
-        listener: (context,state){
-          if(state is AuthInvalid){
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(state.errorMsg)),
+        listener: (context,state) {
+          if(state is AuthResult){
+             ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text(state.msg,style: TextStyle(
+                color: Colors.white
+              ),),
+              backgroundColor: Colors.black,
+              duration: Duration(seconds: 2),
+              ),
             );
-          }
-          else if(state is AuthSuccess){
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text("Login Success !!!!")),
-            );
+            if(state.msg == "Login Successful"){
+               Navigator.push(context,MaterialPageRoute(builder: (context) => HomeScreen()));
+            }
           }
         },
         child: Scaffold(

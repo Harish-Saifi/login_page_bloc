@@ -13,13 +13,8 @@ class AuthBloc  extends Bloc<AuthEvents,AuthStates>{
            }
            emit(AuthLoading());
            await Future.delayed(Duration(seconds: 3));
-           String? msg = checkInput(email, password);
-           if(msg == null){
-               return emit(AuthSuccess());
-           }else{
-             return emit(AuthInvalid(errorMsg: msg!));
-           }
-
+           String msg = checkInput(email, password);
+           return emit(AuthResult(msg: msg,email: email));
       });
     }
 
@@ -43,9 +38,9 @@ class AuthBloc  extends Bloc<AuthEvents,AuthStates>{
     }
 
 
-    String? checkInput(String email, String password){
+    String checkInput(String email, String password){
          if(email == "abc@yopmail.com" && password == "123abc"){
-            return null;
+            return "Login Successful";
          }
          return "Invalid Credentials";
     }

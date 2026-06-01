@@ -12,9 +12,8 @@ class AuthError extends AuthStates {
   AuthError(this.emailErrorMsg,this.passwordErrorMsg);
 }
 
-class AuthInvalid extends AuthStates {
-  String errorMsg;
-  AuthInvalid({required this.errorMsg});
+class AuthResult extends AuthStates{
+   String msg;
+   String? email;
+   AuthResult({required this.msg, this.email});
 }
-
-class AuthSuccess extends AuthStates {}
