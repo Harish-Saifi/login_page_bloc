@@ -10,7 +10,7 @@ class HomeScreen extends StatelessWidget {
     final userDetail = context.watch<AuthBloc>().state;
     return BlocConsumer<AuthBloc, AuthStates>(
       listener: (context, state) {
-        if (state is AuthLogout) {
+        if (state is AuthInitial) {
           Navigator.pop(context);
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
@@ -23,11 +23,23 @@ class HomeScreen extends StatelessWidget {
             ),
           );
         }
+        if (state is AuthException) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                "Exception occurred : ${state.msg}",
+                style: TextStyle(color: Colors.orange),
+              ),
+              backgroundColor: Colors.blueGrey,
+              duration: Duration(seconds: 2),
+            ),
+          );
+        }
       },
       builder: (context, state) {
         if (state is AuthLoading) {
           return Scaffold(
-            body:  Center(
+            body: Center(
               child: SizedBox(
                 height: 80,
                 width: 80,
@@ -39,11 +51,25 @@ class HomeScreen extends StatelessWidget {
             ),
           );
         }
+
         return Scaffold(
           appBar: AppBar(title: Text("Welcome to user")),
-          body: Center(
-            child: Text(userDetail is AuthResult ? userDetail.email! : ""),
-          ),
+          body: (state is AuthLoading)
+              ? Center(
+                  child: SizedBox(
+                    height: 80,
+                    width: 80,
+                    child: CircularProgressIndicator(
+                      strokeWidth: 5,
+                      color: Colors.black,
+                    ),
+                  ),
+                )
+              : Center(
+                  child: Text(
+                    userDetail is AuthResult ? userDetail.email! : "",
+                  ),
+                ),
           bottomNavigationBar: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
             child: ElevatedButton(
