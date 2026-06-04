@@ -10,17 +10,17 @@ class AuthBloc  extends Bloc<AuthEvents,AuthStates>{
     }
 
 
-    @override
-    void onChange(Change<AuthStates> change) {
-      super.onChange(change);
-      debugPrint("Change of state : $change");
-    }
-
-    @override
-  void onTransition(Transition<AuthEvents, AuthStates> transition) {
-    super.onTransition(transition);
-    debugPrint("Transition : $transition");
-  }
+  //   @override
+  //   void onChange(Change<AuthStates> change) {
+  //     super.onChange(change);
+  //     debugPrint("Change of state : $change");
+  //   }
+  //
+  //   @override
+  // void onTransition(Transition<AuthEvents, AuthStates> transition) {
+  //   super.onTransition(transition);
+  //   debugPrint("Transition : $transition");
+  // }
 
     Future<void> _onAuthSubmittedEvent(AuthSubmittedEvent event,Emitter<AuthStates> emit) async{
       String email = event.email;

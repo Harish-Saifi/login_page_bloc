@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:login_page_bloc/Auth/login_screen.dart';
 import 'package:login_page_bloc/Auth_bloc/auth_bloc.dart';
+import 'package:login_page_bloc/bloc_observer.dart';
 
 void main() {
+  Bloc.observer = Observer();
   runApp(const MyApp());
 }
 
