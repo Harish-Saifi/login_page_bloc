@@ -17,3 +17,5 @@ class AuthResult extends AuthStates{
    String? email;
    AuthResult({required this.msg, this.email});
 }
+
+class AuthLogout extends AuthStates{}

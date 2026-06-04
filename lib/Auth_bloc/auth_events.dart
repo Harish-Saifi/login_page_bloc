@@ -7,5 +7,6 @@ class AuthSubmittedEvent extends AuthEvents {
    final String password;
 
    AuthSubmittedEvent({required this.email, required this.password});
-
 }
+
+class AuthLogoutEvent extends AuthEvents {}

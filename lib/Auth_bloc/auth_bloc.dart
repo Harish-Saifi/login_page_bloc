@@ -16,7 +16,11 @@ class AuthBloc  extends Bloc<AuthEvents,AuthStates>{
            String msg = checkInput(email, password);
            return emit(AuthResult(msg: msg,email: email));
       });
+      on<AuthLogoutEvent>((event,state){
+        emit(AuthLogout());
+      });
     }
+
 
     (String?, String?) validateInput(String email,String password){
 
