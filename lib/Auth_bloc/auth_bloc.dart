@@ -16,7 +16,9 @@ class AuthBloc  extends Bloc<AuthEvents,AuthStates>{
            String msg = checkInput(email, password);
            return emit(AuthResult(msg: msg,email: email));
       });
-      on<AuthLogoutEvent>((event,state){
+      on<AuthLogoutEvent>((event,state) async{
+        emit(AuthLoading());
+        await Future.delayed(Duration(seconds: 2));
         emit(AuthLogout());
       });
     }
